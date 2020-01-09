@@ -1,0 +1,22 @@
+.FileUploader {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.FileUploader + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    padding: 10px;
+    background-color: black;
+    display: inline-block;
+}
+
+.FileUploader:active + label,
+.FileUploader + label:hover {
+    background-color: green;
+}

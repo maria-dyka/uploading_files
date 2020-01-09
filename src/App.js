@@ -8,12 +8,15 @@ function App() {
   const [files, setFiles] = useState([])
 
   const onChangeHandler = e => {
-    const files = Object.values(e.target.files);
+    const files = Object.values(e.target.files).map((el, index) => {
+      el.id = index + 1;
+      return el;
+    });
     setFiles(files)
   }
 
-  const cancelFileHandler = index => {
-    let newFiles = files.filter((file, i) => i !== index)
+  const cancelFileHandler = id => {
+    let newFiles = files.filter(file => file.id !== id)
     setFiles(newFiles)
   }
 
@@ -34,10 +37,10 @@ function App() {
       <FileUploader onChange={onChangeHandler} multiple={true}/>
       {(files.length > 0)? 
         <div>
-          {files.map((file, index) => (
-            <div key={index}>
+          {files.map(file => (
+            <div key={file.id}>
               <span>{`${file.name} ${(file.size/1024).toFixed(2)}kB`}</span>
-              <button onClick={() => cancelFileHandler(index)}>CANCEL</button>
+              <button onClick={() => cancelFileHandler(file.id)}>CANCEL</button>
             </div>
           ))}
           <button onClick={onClickHandler}>UPLOAD</button>

@@ -41,7 +41,6 @@
     "jest-watch-typeahead": "0.4.2",
     "mini-css-extract-plugin": "0.8.0",
     "multer": "^1.4.2",
-    "nodemon": "^2.0.2",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -69,7 +68,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "postinstall": "cd public && mkdir uploads && cd ../"
   },
   "eslintConfig": {
     "extends": "react-app"

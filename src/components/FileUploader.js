@@ -11,7 +11,7 @@ const FileUploader = props => {
                 id="file-uploader" 
                 onChange={e => props.onChange(e)} 
                 multiple={props.multiple}/>
-            <label htmlFor="file-uploader">Upload files</label>
+            <label htmlFor="file-uploader">Select files</label>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import './App.css';
 import axios from 'axios'
+import styles from './App.module.css'
 
 import FileUploader from './components/FileUploader';
 
@@ -32,18 +32,28 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <h3>Upload your files here</h3>
       <FileUploader onChange={onChangeHandler} multiple={true}/>
       {(files.length > 0)? 
-        <div>
-          {files.map(file => (
-            <div key={file.id}>
-              <span>{`${file.name} ${(file.size/1024).toFixed(2)}kB`}</span>
-              <button onClick={() => cancelFileHandler(file.id)}>CANCEL</button>
-            </div>
-          ))}
-          <button onClick={onClickHandler}>UPLOAD</button>
+        <div className={styles.ListWrapper}>
+          <div className={styles.FilesList}>
+            {files.map((file, index) => (
+              <div key={file.id} className={styles.FileItem}>
+                <div className={styles.FileNumber}>{index + 1}</div>
+                <div className={styles.FileName}>{file.name}</div>
+                <div className={styles.FileSize}>{`${(file.size/1024).toFixed(2)}kB`}</div>
+                <div className={styles.FileCancel}>
+                  <button 
+                    onClick={() => cancelFileHandler(file.id)}
+                    className={[styles.Button, styles.ButtonCancel].join(' ')}>X</button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button 
+            className={[styles.Button, styles.ButtonUpload].join(' ')} 
+            onClick={onClickHandler}>UPLOAD</button>
         </div>: null}
     </div>
   );

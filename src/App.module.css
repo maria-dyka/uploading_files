@@ -1,0 +1,79 @@
+.App {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ListWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.FilesList {
+    display: flex;
+    flex-direction: column;
+    max-width: 750px;
+    width: 50%;
+    border: solid 1px lightgrey;
+    margin: 15px 0;
+    padding: 20px;
+}
+
+.FileItem {
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+.FileName, .FileSize, .FileCancel, .FileNumber  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.FileNumber {
+    width: 5%;
+}
+
+.FileName {
+    width: 65%;
+    justify-content: flex-start;
+}
+
+.FileSize {
+    width: 20%;
+}
+
+.FileCancel {
+    width: 10%;
+}
+
+.Button {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    border: none;
+}
+
+.ButtonUpload {
+    background-color: black;
+    padding: 10px;
+}
+
+.ButtonCancel {
+    background-color: rgb(209, 29, 29);
+    padding: 5px 10px;
+}
+
+.ButtonCancel:active,
+.ButtonCancel:hover {
+    background-color: rgb(90, 17, 17);
+}
+
+.ButtonUpload:active,
+.ButtonUpload:hover {
+    background-color: green;
+}

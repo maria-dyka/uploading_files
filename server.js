@@ -5,7 +5,7 @@ var cors = require('cors');
 
 app.use(cors());
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
     destination: function (req, file, cb) {
     cb(null, 'public/uploads')
   },
@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var upload = multer({ storage: storage }).single('file')
+const upload = multer({ storage: storage }).array('file')
 app.post('/upload',function(req, res) {
      
     upload(req, res, function (err) {

@@ -13,15 +13,15 @@ function App() {
   }
 
   const cancelFileHandler = index => {
-    let newFiles = [...files];
-    newFiles.splice(index, 1);
-    console.log('newFiles', newFiles)
+    let newFiles = files.filter((file, i) => i !== index)
     setFiles(newFiles)
   }
 
   const onClickHandler = () => {
     let data = new FormData()
-    data.append('file', files[0])
+    files.forEach(file => {
+      data.append('file', file)
+    })
     axios.post('http://localhost:8080/upload', data)
       .then(resp => {
         console.log(resp.statusText)

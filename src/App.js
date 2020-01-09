@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import axios from 'axios'
 
 import FileUploader from './components/FileUploader';
 
@@ -18,6 +19,15 @@ function App() {
     setFiles(newFiles)
   }
 
+  const onClickHandler = () => {
+    let data = new FormData()
+    data.append('file', files[0])
+    axios.post('http://localhost:8080/upload', data)
+      .then(resp => {
+        console.log(resp.statusText)
+      })
+  }
+
   return (
     <div className="App">
       <h3>Upload your files here</h3>
@@ -30,7 +40,7 @@ function App() {
               <button onClick={() => cancelFileHandler(index)}>CANCEL</button>
             </div>
           ))}
-          <button>UPLOAD</button>
+          <button onClick={onClickHandler}>UPLOAD</button>
         </div>: null}
     </div>
   );
